@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English to French Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="card">
+            <h1>English to French Translator</h1>
+            <p class="subtitle">
+                Enter an English sentence and the model will generate a French translation.
+            </p>
+
+            <form method="POST">
+                <label for="sentence">English sentence</label>
+
+                <textarea
+                    id="sentence"
+                    name="sentence"
+                    rows="4"
+                    placeholder="Example: he likes apples ."
+                >{{ sentence }}</textarea>
+
+                <button type="submit">Translate</button>
+            </form>
+
+            {% if error %}
+                <div class="message error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            {% if translation %}
+                <div class="result">
+                    <h2>French translation</h2>
+                    <p>{{ translation }}</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
